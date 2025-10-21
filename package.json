@@ -1,0 +1,17 @@
+{
+  "name": "eventhub-back",
+  "version": "1.0.0",
+  "description": "EventHub è una piattaforma web che permette agli utenti di creare, gestire e partecipare ad eventi",
+  "license": "ISC",
+  "author": "Thomas Raimondi",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "node --watch app.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "mysql2": "^3.15.2"
+  }
+}
