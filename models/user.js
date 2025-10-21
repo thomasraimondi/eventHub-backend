@@ -1,11 +1,14 @@
 const { db } = require("../data/db");
 
 const getUsers = () => {
-  db.query("SELECT * FROM users", (err, results) => {
-    if (err) {
-      throw err;
-    }
-    return results;
+  return new Promise((resolve, reject) => {
+    db.query("SELECT * FROM users", (err, results) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(results);
+      }
+    });
   });
 };
 
@@ -27,7 +30,14 @@ const createUser = async (user) => {
       if (err) {
         reject(err);
       } else {
-        resolve(results[0]);
+        const newUser = {
+          id: results.insertId,
+          name: user.name,
+          email: user.email,
+          password: user.password,
+          role: user.role,
+        };
+        resolve(newUser);
       }
     });
   });
