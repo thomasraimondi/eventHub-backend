@@ -7,6 +7,11 @@ const login = (req, res) => {
   res.status(200).json({ message: "Login successful", user: req.user });
 };
 
+const logout = (req, res) => {
+  res.clearCookie("accessToken");
+  res.status(200).json({ message: "Logout successful" });
+};
+
 const register = async (req, res) => {
   const user = {
     name: req.body.name,
@@ -20,4 +25,4 @@ const register = async (req, res) => {
   return res.status(201).json({ message: "User created successfully", data: newUser });
 };
 
-module.exports = { login, register };
+module.exports = { login, register, logout };

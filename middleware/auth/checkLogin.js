@@ -5,7 +5,6 @@ const bcrypt = require("bcrypt");
 const checkLogin = async (req, res, next) => {
   const { email, password } = req.body;
   const user = await userModels.getUserByEmail(email);
-  console.log("user", user);
 
   if (!user) {
     return res.status(401).json({ message: "User not found" });
