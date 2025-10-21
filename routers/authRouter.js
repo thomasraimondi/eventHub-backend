@@ -6,6 +6,7 @@ const { validationDataLogin } = require("../middleware/auth/validationDataLogin"
 const { validationDataRegister } = require("../middleware/auth/validationDataRegister");
 
 router.post("/login", validationDataLogin, checkLogin, authController.login);
+router.get("/logout", authController.logout);
 router.post("/register", validationDataRegister, authController.register);
 
 module.exports = router;
