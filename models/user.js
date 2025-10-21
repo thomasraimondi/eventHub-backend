@@ -21,4 +21,16 @@ const getUserByEmail = async (email) => {
   });
 };
 
-module.exports = { getUsers, getUserByEmail };
+const createUser = async (user) => {
+  return new Promise((resolve, reject) => {
+    db.query("INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)", [user.name, user.email, user.password, user.role], (err, results) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(results[0]);
+      }
+    });
+  });
+};
+
+module.exports = { getUsers, getUserByEmail, createUser };
