@@ -9,4 +9,13 @@ const getUsers = async () => {
   }
 };
 
-module.exports = { getUsers };
+const updateUser = async (id, user) => {
+  try {
+    const updatedUser = await userModels.updateUser(id, user);
+    return updatedUser;
+  } catch (error) {
+    return { message: error.message };
+  }
+};
+
+module.exports = { getUsers, updateUser };
