@@ -1,4 +1,5 @@
 const authService = require("../services/authService");
+const jwt = require("jsonwebtoken");
 
 const login = (req, res) => {
   const accessToken = authService.createAccessToken(req.user);
@@ -8,6 +9,10 @@ const login = (req, res) => {
 };
 
 const logout = (req, res) => {
+  const token = req.cookies.accessToken;
+  if (!token) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
   res.clearCookie("accessToken");
   res.status(200).json({ message: "Logout successful" });
 };
