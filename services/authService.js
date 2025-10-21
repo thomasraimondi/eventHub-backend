@@ -1,4 +1,4 @@
-const user = require("../models/user");
+const userModels = require("../models/user");
 const jwt = require("jsonwebtoken");
 
 const generateAccessToken = (user) => {
@@ -9,8 +9,8 @@ const createAccessToken = (user) => {
   return generateAccessToken(user);
 };
 
-const register = () => {
-  return { message: "Register successful" };
+const register = (user) => {
+  return userModels.createUser(user);
 };
 
 module.exports = { createAccessToken, register };

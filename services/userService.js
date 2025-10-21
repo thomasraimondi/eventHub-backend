@@ -1,8 +1,8 @@
-const user = require("../models/user");
+const userModels = require("../models/user");
 
 const getUsers = async () => {
   try {
-    const users = await user.getUsers();
+    const users = await userModels.getUsers();
     return users;
   } catch (error) {
     return { message: error.message };
