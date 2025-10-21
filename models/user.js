@@ -24,6 +24,7 @@ const getUserByEmail = async (email) => {
   });
 };
 
+// TODO: Add password hashing
 const createUser = async (user) => {
   return new Promise((resolve, reject) => {
     db.query("INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)", [user.name, user.email, user.password, user.role], (err, results) => {
