@@ -1,8 +1,12 @@
 const express = require("express");
+const cookieParser = require("cookie-parser");
 const app = express();
 const usersRouter = require("./routers/usersRouter");
 const eventsRouter = require("./routers/eventsRouter");
 const authRouter = require("./routers/authRouter");
+
+app.use(express.json());
+app.use(cookieParser());
 
 app.use("/auth", authRouter);
 app.use("/users", usersRouter);
